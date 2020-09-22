@@ -7,6 +7,7 @@
 
     <color name="red">#F44336</color>
     <color name="white">#FFFFFF</color>
+    <color name="gray">#F4F4F4</color>
     <color name="green">#128B2B</color>
     <color name="tab_background">#5CB56F</color>
     <color name="selected_tab_background">#15932F</color>
