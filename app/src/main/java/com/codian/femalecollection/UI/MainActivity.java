@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 
         actionBarDrawerToggle=new ActionBarDrawerToggle(this,
                 binding.drawerLayout,binding.include.toolbar,R.string.open, R.string.close);
-        actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getColor(R.color.black));
+        actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getColor(R.color.white));
 
 
         binding.drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -58,12 +57,12 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         binding.navigationView.setNavigationItemSelectedListener(this);
 
       //  binding.hideNav.setOnClickListener(this);
-        binding.additem.setOnClickListener(this);
+
         binding.category.setOnClickListener(this);
         binding.home.setOnClickListener(this);
         binding.logout.setOnClickListener(this);
         binding.profile.setOnClickListener(this);
-        binding.setting.setOnClickListener(this);
+        binding.createaccount.setOnClickListener(this);
         initFragmentHome();
     }
 
@@ -97,7 +96,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             if (valu>10){
                 cartQuantity.setText("10+");
             }
-            Toast.makeText(this, ""+valu, Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(this, ""+valu, Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -113,16 +112,14 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             /*case R.id.hide_nav:
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;*/
-            case R.id.additem:
 
-                break;
             case R.id.profile:
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.setting:
+            case R.id.createaccount:
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-                Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Create Account", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.category:
 

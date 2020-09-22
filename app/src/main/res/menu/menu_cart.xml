@@ -4,6 +4,6 @@
     <item
         android:id="@+id/cartmenuid"
         android:title="cart"
-        android:icon="@drawable/ic_supermarket"
+        android:icon="@drawable/ic_cartt"
         app:showAsAction="always" />
 </menu>

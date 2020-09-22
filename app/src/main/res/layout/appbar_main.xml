@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#FBF9F9"
+            android:background="@color/colorPrimaryDark"
             app:titleTextColor="@color/black">
 
             <LinearLayout
@@ -29,8 +29,8 @@
 
             <TextView
                 android:id="@+id/toolbarTitle"
-                android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:textSize="22dp"
                 android:textAlignment="textStart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
