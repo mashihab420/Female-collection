@@ -28,6 +28,10 @@ private FragmentHomeBinding binding;
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater,container,false);
         View view = binding.getRoot();
+
+        //TODO
+
+
         return view;
     }
 }
