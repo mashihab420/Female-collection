@@ -16,5 +16,8 @@ public interface ApiInterface {
  @GET("get_products.php")
  Call<List<ModelAll>> getProducts();
 
+ @POST("signup.php")
+ Call<ModelAll> inputmanagerData(@Body ModelAll modelAll);
+
 
 }
