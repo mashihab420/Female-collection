@@ -17,8 +17,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codian.femalecollection.R;
+import com.codian.femalecollection.UI.Model.ModelAll;
+import com.codian.femalecollection.UI.retrofit.ApiClint;
+import com.codian.femalecollection.UI.retrofit.ApiInterface;
 import com.codian.femalecollection.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
@@ -28,6 +38,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     Toolbar toolbarr;
     TextView toolbarTitle,cartQuantity;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +75,9 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         binding.profile.setOnClickListener(this);
         binding.createaccount.setOnClickListener(this);
         initFragmentHome();
+
+
+
     }
 
 

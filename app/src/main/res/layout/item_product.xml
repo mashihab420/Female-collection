@@ -34,6 +34,7 @@
         android:textColor="@color/red"
         android:layout_marginTop="8dp"
         android:text="1200 BDT"
+        android:id="@+id/priceid"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 

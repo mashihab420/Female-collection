@@ -122,6 +122,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
+        android:id="@+id/recyclerViewid"
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_product"
         android:layout_marginTop="2dp"
