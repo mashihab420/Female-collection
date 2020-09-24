@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.Place_order"></activity>
+        <activity android:name=".UI.Product_description"></activity>
+        <activity android:name=".UI.Place_order" />
         <activity android:name=".UI.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
