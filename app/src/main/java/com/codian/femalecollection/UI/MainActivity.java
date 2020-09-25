@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -131,16 +132,34 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.createaccount:
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
-                Toast.makeText(this, "Create Account", Toast.LENGTH_SHORT).show();
-                break;
+
+
             case R.id.category:
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                Fragment_logIn logIn =new Fragment_logIn();
+                FragmentTransaction fragmentTransaction1=getSupportFragmentManager().beginTransaction();
+                fragmentTransaction1.add(binding.include.contentMain.fragmentContainer.getId(),logIn,"HomeFragment").commit();
 
                 break;
+
+            case R.id.createaccount:
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+
+                Fragment_create_account create_account =new Fragment_create_account();
+                FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.add(binding.include.contentMain.fragmentContainer.getId(),create_account,"HomeFragment").commit();
+
+                break;
+
+
+
+
+
             case R.id.logout:
                 Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
                 break;
+
+
             default:
 
 

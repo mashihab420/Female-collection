@@ -62,28 +62,31 @@
         app:layout_constraintTop_toBottomOf="@+id/et_phone" />
 
     <Button
+
+        android:layout_margin="20sp"
         android:id="@+id/bt_save"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/soft_pink"
         android:text="Create"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_address"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintVertical_bias="0.951" />
 
     <TextView
-        android:textColor="@android:color/black"
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:text="Create An Account"
+        android:textColor="@android:color/black"
         android:textSize="@dimen/normal_text_size"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

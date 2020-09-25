@@ -15,13 +15,23 @@ public class Fragment_create_account extends Fragment {
 
 
     public Fragment_create_account() {
-        // Required empty public constructor
+
     }
+
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        if (container!=null)
+        {
+
+            container.removeAllViews();
+
+        }
+
 
         return inflater.inflate(R.layout.fragment_create_account, container, false);
     }

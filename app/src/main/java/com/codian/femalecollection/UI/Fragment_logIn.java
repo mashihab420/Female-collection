@@ -24,6 +24,16 @@ public class Fragment_logIn extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        if (container!=null)
+        {
+
+            container.removeAllViews();
+
+        }
+
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_log_in, container, false);
     }
