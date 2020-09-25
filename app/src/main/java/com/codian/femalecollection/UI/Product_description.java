@@ -35,6 +35,10 @@ public class Product_description extends AppCompatActivity {
                 .centerCrop()
                 .into(binding.imageView);
 
+        binding.textView6.setText(name);
+        binding.textView7.setText(price);
+        binding.textView14.setText(des);
+
 
     }
 }
