@@ -19,9 +19,9 @@ import java.util.List;
 
 public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.MyViewHolder> {
     Context context;
-   List<ModelAll> products;
+   ArrayList<ModelAll> products;
 
-    public AllProductAdapter(Context context, List<ModelAll> products) {
+    public AllProductAdapter(Context context, ArrayList<ModelAll> products) {
         this.context = context;
         this.products = products;
     }

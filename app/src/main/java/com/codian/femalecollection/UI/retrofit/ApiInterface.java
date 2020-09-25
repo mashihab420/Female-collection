@@ -19,5 +19,4 @@ public interface ApiInterface {
  @POST("signup.php")
  Call<ModelAll> inputmanagerData(@Body ModelAll modelAll);
 
-
 }

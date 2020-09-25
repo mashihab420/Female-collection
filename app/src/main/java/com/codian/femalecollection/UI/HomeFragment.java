@@ -3,6 +3,7 @@ package com.codian.femalecollection.UI;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,9 +30,14 @@ import retrofit2.Retrofit;
 public class HomeFragment extends Fragment {
 
 private FragmentHomeBinding binding;
-List<ModelAll> products;
+ArrayList<ModelAll> products;
 AllProductAdapter allProductAdapter;
 RecyclerView recyclerView;
+ApiInterface apiInterface;
+
+
+
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -39,34 +45,43 @@ RecyclerView recyclerView;
 
 
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        binding = FragmentHomeBinding.inflate(inflater,container,false);
-        View view = binding.getRoot();
 
+        if (container!=null)
+        {
+
+            container.removeAllViews();
+
+        }
+        // Inflate the layout for this fragment
+       binding = FragmentHomeBinding.inflate(inflater,container,false);
+    View view = binding.getRoot();
+        //View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.recyclerViewid);
-        //TODO
+
 
         products = new ArrayList<>();
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
-
-        allProductAdapter = new AllProductAdapter(getActivity(),products);
-        recyclerView.setAdapter(allProductAdapter);
+        allProductAdapter = new AllProductAdapter(getContext(),products);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
 
 
-        Retrofit instance = ApiClint.instance();
-        ApiInterface apiInterface = instance.create(ApiInterface.class);
+
+       Retrofit instance = ApiClint.instance();
+        apiInterface = instance.create(ApiInterface.class);
 
 
-        apiInterface.getProducts().enqueue(new Callback<List<ModelAll>>() {
+      apiInterface.getProducts().enqueue(new Callback<List<ModelAll>>() {
             @Override
             public void onResponse(Call<List<ModelAll>> call, Response<List<ModelAll>> response) {
 
                // products.clear();
                 products.addAll(response.body());
                 allProductAdapter.notifyDataSetChanged();
+                recyclerView.setAdapter(allProductAdapter);
 
             }
 

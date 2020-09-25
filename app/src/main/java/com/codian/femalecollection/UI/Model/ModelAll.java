@@ -7,30 +7,62 @@ public class ModelAll {
     @SerializedName("id")
     @Expose
     private String id;
+
+
     @SerializedName("p_name")
     @Expose
     private String pName;
+
+
     @SerializedName("p_price")
     @Expose
     private String pPrice;
-    @SerializedName("description")
 
+
+    @SerializedName("description")
+    @Expose
     private String categories;
+
+
     @SerializedName("category")
     @Expose
     private String description;
+
+
     @SerializedName("url")
+    @Expose
+    private String url;
 
-    private String Name;
     @SerializedName("name")
+    @Expose
+    private String Name;
 
-    private String Phone;
+
+
     @SerializedName("phone")
+    @Expose
+    private String Phone;
 
-    private String Password;
+
+
+
+
+
     @SerializedName("password")
+    @Expose
+    private String Password;
 
+
+    @SerializedName("address")
+    @Expose
     private String Address;
+
+
+
+
+
+
+
 
     public String getName() {
         return Name;
@@ -64,11 +96,10 @@ public class ModelAll {
         Address = address;
     }
 
-    @SerializedName("address")
 
 
-    @Expose
-    private String url;
+
+
 
     public String getId() {
         return id;
