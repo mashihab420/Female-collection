@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.codian.femalecollection.R;
+import com.codian.femalecollection.UI.Adapter.AllCategoryAdapter;
 import com.codian.femalecollection.UI.Adapter.AllProductAdapter;
 import com.codian.femalecollection.UI.Model.ModelAll;
 import com.codian.femalecollection.UI.retrofit.ApiClint;
@@ -32,8 +33,10 @@ public class HomeFragment extends Fragment {
 
 private FragmentHomeBinding binding;
 ArrayList<ModelAll> products;
+ArrayList<ModelAll> allcategory;
 AllProductAdapter allProductAdapter;
-RecyclerView recyclerView;
+AllCategoryAdapter allCategoryAdapter;
+RecyclerView recyclerView,recyclerViewcat;
 ApiInterface apiInterface;
 
 
@@ -70,6 +73,10 @@ ApiInterface apiInterface;
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
 
 
+        allcategory = new ArrayList<>();
+        allCategoryAdapter = new AllCategoryAdapter(getContext(),allcategory);
+        binding.recyclerViewCategory.setLayoutManager(new GridLayoutManager(getContext(),1));
+
 
        Retrofit instance = ApiClint.instance();
         apiInterface = instance.create(ApiInterface.class);
@@ -84,6 +91,10 @@ ApiInterface apiInterface;
                 allProductAdapter.notifyDataSetChanged();
                 recyclerView.setAdapter(allProductAdapter);
 
+                allcategory.addAll(response.body());
+                allCategoryAdapter.notifyDataSetChanged();
+                binding.recyclerViewCategory.setAdapter(allCategoryAdapter);
+
             }
 
             @Override
@@ -93,6 +104,9 @@ ApiInterface apiInterface;
 
             }
         });
+
+
+
 
 
         return view;
