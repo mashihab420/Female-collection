@@ -21,12 +21,13 @@ public class ModelAll {
 
     @SerializedName("description")
     @Expose
-    private String categories;
+    private String description;
+
 
 
     @SerializedName("category")
     @Expose
-    private String description;
+    private String categories;
 
 
     @SerializedName("url")
