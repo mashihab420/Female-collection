@@ -24,6 +24,10 @@ public class ModelAll {
     private String description;
 
 
+    @SerializedName("email")
+    @Expose
+    private String email;
+
 
     @SerializedName("category")
     @Expose
@@ -97,10 +101,29 @@ public class ModelAll {
         Address = address;
     }
 
+    public String getpName() {
+        return pName;
+    }
 
+    public void setpName(String pName) {
+        this.pName = pName;
+    }
 
+    public String getpPrice() {
+        return pPrice;
+    }
 
+    public void setpPrice(String pPrice) {
+        this.pPrice = pPrice;
+    }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getId() {
         return id;

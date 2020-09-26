@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     int valu =0;
     Toolbar toolbarr;
     TextView toolbarTitle,cartQuantity;
+    MysharedPreferance sharedPreferance;
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -69,6 +71,13 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         binding.navigationView.setNavigationItemSelectedListener(this);
 
       //  binding.hideNav.setOnClickListener(this);
+
+        sharedPreferance = MysharedPreferance.getPreferences(getApplicationContext());
+        if (!sharedPreferance.getData().equals("none"))
+        {
+            binding.userName.setText(sharedPreferance.getData());
+        }
+
 
         binding.category.setOnClickListener(this);
         binding.home.setOnClickListener(this);
