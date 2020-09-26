@@ -1,16 +1,19 @@
 package com.codian.femalecollection.UI.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.codian.femalecollection.R;
 import com.codian.femalecollection.UI.Model.ModelAll;
+import com.codian.femalecollection.UI.ShowCategories;
 
 import java.util.ArrayList;
 
@@ -35,6 +38,16 @@ public class AllCategoryAdapter extends RecyclerView.Adapter<AllCategoryAdapter.
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         holder.name.setText(allcategory.get(position).getCategories());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String category = allcategory.get(position).getCategories();
+                Intent intent = new Intent(context, ShowCategories.class);
+                intent.putExtra("cat",category);
+                context.startActivity(intent);
+            }
+        });
 
     }
 

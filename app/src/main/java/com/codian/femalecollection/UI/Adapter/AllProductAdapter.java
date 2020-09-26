@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -67,6 +68,13 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.My
 
             }
         });
+        
+        holder.add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Add to Cart", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -76,13 +84,14 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.My
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView name,price;
+        TextView name,price,add;
         ImageView image;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.textView6);
             price = itemView.findViewById(R.id.priceid);
             image = itemView.findViewById(R.id.imageView3);
+            add = itemView.findViewById(R.id.addid);
         }
     }
 }

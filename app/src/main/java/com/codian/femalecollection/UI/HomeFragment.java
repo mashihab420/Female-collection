@@ -75,7 +75,8 @@ ApiInterface apiInterface;
 
         allcategory = new ArrayList<>();
         allCategoryAdapter = new AllCategoryAdapter(getContext(),allcategory);
-        binding.recyclerViewCategory.setLayoutManager(new GridLayoutManager(getContext(),1));
+       // binding.recyclerViewCategory.setLayoutManager(new GridLayoutManager(getContext(),1));
+        binding.recyclerViewCategory.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
 
 
        Retrofit instance = ApiClint.instance();
@@ -91,9 +92,7 @@ ApiInterface apiInterface;
                 allProductAdapter.notifyDataSetChanged();
                 recyclerView.setAdapter(allProductAdapter);
 
-                allcategory.addAll(response.body());
-                allCategoryAdapter.notifyDataSetChanged();
-                binding.recyclerViewCategory.setAdapter(allCategoryAdapter);
+
 
             }
 
@@ -104,6 +103,20 @@ ApiInterface apiInterface;
 
             }
         });
+
+      apiInterface.getcategory().enqueue(new Callback<List<ModelAll>>() {
+          @Override
+          public void onResponse(Call<List<ModelAll>> call, Response<List<ModelAll>> response) {
+              allcategory.addAll(response.body());
+              allCategoryAdapter.notifyDataSetChanged();
+              binding.recyclerViewCategory.setAdapter(allCategoryAdapter);
+          }
+
+          @Override
+          public void onFailure(Call<List<ModelAll>> call, Throwable t) {
+
+          }
+      });
 
 
 

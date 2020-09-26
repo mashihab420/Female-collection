@@ -16,9 +16,15 @@ public interface ApiInterface {
  @GET("get_products.php")
  Call<List<ModelAll>> getProducts();
 
+ @GET("get_category.php")
+ Call<List<ModelAll>> getcategory();
+
 
 
  @POST("signup.php")
  Call<ModelAll> create_account(@Body ModelAll modelAll);
+
+ @POST("get_categoryitem.php")
+ Call<List<ModelAll>> getcategoryitems(@Body ModelAll modelAll);
 
 }
