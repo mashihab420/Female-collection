@@ -144,6 +144,7 @@
         android:layout_margin="10dp"
         android:background="@color/soft_pink"
         android:text="Add To Cart"
+        android:onClick="addToCart"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
