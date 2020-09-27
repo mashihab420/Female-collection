@@ -20,6 +20,7 @@ public class AllCategoryAdapter extends RecyclerView.Adapter<AllCategoryAdapter.
     Context context;
     ArrayList<ModelAll> allcategory;
 
+
     public AllCategoryAdapter(Context context, ArrayList<ModelAll> allcategory) {
         this.context = context;
         this.allcategory = allcategory;

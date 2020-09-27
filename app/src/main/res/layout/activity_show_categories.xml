@@ -32,12 +32,12 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/montserrat"
+            android:layout_marginLeft="5dp"
             android:text="Category Product"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/normal_text_size"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +48,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/recyclerView"
         android:layout_marginTop="8dp"
         tools:listitem="@layout/item_product"
         android:layout_marginBottom="16dp"
