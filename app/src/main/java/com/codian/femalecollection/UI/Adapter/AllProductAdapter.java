@@ -15,12 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.codian.femalecollection.R;
 import com.codian.femalecollection.UI.Model.ModelAll;
-import com.codian.femalecollection.UI.Product_description;
+import com.codian.femalecollection.UI.activity.Product_description;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import io.reactivex.observers.TestObserver;
 
 public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.MyViewHolder> {
     Context context;

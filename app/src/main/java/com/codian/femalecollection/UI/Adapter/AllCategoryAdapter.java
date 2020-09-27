@@ -6,14 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.codian.femalecollection.R;
 import com.codian.femalecollection.UI.Model.ModelAll;
-import com.codian.femalecollection.UI.ShowCategories;
+import com.codian.femalecollection.UI.activity.ShowCategories;
 
 import java.util.ArrayList;
 

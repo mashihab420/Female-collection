@@ -20,11 +20,14 @@ public interface ApiInterface {
  Call<List<ModelAll>> getcategory();
 
 
-
  @POST("signup.php")
  Call<ModelAll> create_account(@Body ModelAll modelAll);
 
  @POST("get_categoryitem.php")
  Call<List<ModelAll>> getcategoryitems(@Body ModelAll modelAll);
+
+
+ @GET("user_login.php")
+ Call<ModelAll> login( @Query("phone") String owner_phone,@Query("password") String password);
 
 }

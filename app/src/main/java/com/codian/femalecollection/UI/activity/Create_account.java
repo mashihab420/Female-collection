@@ -1,57 +1,39 @@
-package com.codian.femalecollection.UI;
+package com.codian.femalecollection.UI.activity;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.Display;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.codian.femalecollection.R;
 import com.codian.femalecollection.UI.Model.ModelAll;
+import com.codian.femalecollection.UI.MysharedPreferance;
 import com.codian.femalecollection.UI.retrofit.ApiClint;
 import com.codian.femalecollection.UI.retrofit.ApiInterface;
-import com.codian.femalecollection.databinding.FragmentCreateAccountBinding;
-import com.codian.femalecollection.databinding.FragmentHomeBinding;
+import com.codian.femalecollection.databinding.ActivityCreateAccountBinding;
+import com.codian.femalecollection.databinding.ActivityProductDescriptionBinding;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+public class Create_account extends AppCompatActivity {
 
-public class Fragment_create_account extends Fragment {
-
-    private FragmentCreateAccountBinding binding;
+    private ActivityCreateAccountBinding binding;
     ApiInterface apiInterface;
     MysharedPreferance sharedPreferance;
 
-    public Fragment_create_account() {
-
-    }
-
-
-
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivityCreateAccountBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        sharedPreferance = MysharedPreferance.getPreferences(getApplicationContext());
 
-        if (container!=null)
-        {
-
-            container.removeAllViews();
-
-        }
-
-
-        binding = FragmentCreateAccountBinding.inflate(inflater,container,false);
-        View view = binding.getRoot();
-        sharedPreferance = MysharedPreferance.getPreferences(getContext());
 
         binding.btSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +51,7 @@ public class Fragment_create_account extends Fragment {
 
                 if (!get_con_pass.equals(get_pass))
                 {
-                    Toast.makeText(getContext(), "Password doesn't match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Password doesn't match", Toast.LENGTH_SHORT).show();
                 }
                 else if (get_name.isEmpty())
                 {
@@ -91,9 +73,9 @@ public class Fragment_create_account extends Fragment {
                     binding.etAddress.setError("Invalid address");
                 }
 
-               else {
+                else {
 
-                   Retrofit instance = ApiClint.instance();
+                    Retrofit instance = ApiClint.instance();
                     apiInterface = instance.create(ApiInterface.class);
                     ModelAll modelAll= new ModelAll();
                     modelAll.setName(get_name);
@@ -108,12 +90,15 @@ public class Fragment_create_account extends Fragment {
                         public void onResponse(Call<ModelAll> call, Response<ModelAll> response) {
 
 
-                            Toast.makeText(getContext(), "Successfully created", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Successfully created", Toast.LENGTH_SHORT).show();
                             sharedPreferance.setData(get_name);
                             sharedPreferance.setPhone(get_phone);
                             sharedPreferance.setEmail(get_email);
                             sharedPreferance.setAddress(get_address);
 
+
+                            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                            startActivity(intent);
 
 
 
@@ -124,7 +109,7 @@ public class Fragment_create_account extends Fragment {
                         public void onFailure(Call<ModelAll> call, Throwable t) {
                             binding.progressBar.setVisibility(View.GONE);
                             binding.btSave.setVisibility(View.VISIBLE);
-                            Toast.makeText(getContext(), "Something wrong", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Something wrong", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -135,9 +120,5 @@ public class Fragment_create_account extends Fragment {
         });
 
 
-
-
-
-        return view;
     }
 }

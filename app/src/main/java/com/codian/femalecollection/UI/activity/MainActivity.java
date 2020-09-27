@@ -1,4 +1,4 @@
-package com.codian.femalecollection.UI;
+package com.codian.femalecollection.UI.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -14,23 +14,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codian.femalecollection.R;
-import com.codian.femalecollection.UI.Model.ModelAll;
-import com.codian.femalecollection.UI.retrofit.ApiClint;
-import com.codian.femalecollection.UI.retrofit.ApiInterface;
+import com.codian.femalecollection.UI.HomeFragment;
+import com.codian.femalecollection.UI.MysharedPreferance;
 import com.codian.femalecollection.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
@@ -76,6 +67,8 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         if (!sharedPreferance.getData().equals("none"))
         {
             binding.userName.setText(sharedPreferance.getData());
+            binding.createaccount.setVisibility(View.GONE);
+            binding.category.setVisibility(View.GONE);
         }
 
 
@@ -145,18 +138,17 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 
             case R.id.category:
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-                Fragment_logIn logIn =new Fragment_logIn();
-                FragmentTransaction fragmentTransaction1=getSupportFragmentManager().beginTransaction();
-                fragmentTransaction1.add(binding.include.contentMain.fragmentContainer.getId(),logIn,"HomeFragment").commit();
+                Intent intent1=new Intent(getApplicationContext(),LogIn.class);
+                startActivity(intent1);
 
                 break;
 
             case R.id.createaccount:
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
 
-                Fragment_create_account create_account =new Fragment_create_account();
-                FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.add(binding.include.contentMain.fragmentContainer.getId(),create_account,"HomeFragment").commit();
+
+                Intent intent=new Intent(getApplicationContext(),Create_account.class);
+                startActivity(intent);
 
                 break;
 

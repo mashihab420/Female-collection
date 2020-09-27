@@ -14,10 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UI.ShowCategories"></activity>
-        <activity android:name=".UI.Product_description" />
+        <activity android:name=".UI.activity.Profile"></activity>
+        <activity android:name=".UI.activity.Create_account" />
+        <activity android:name=".UI.activity.LogIn" />
+        <activity android:name=".UI.activity.ShowCategories" />
+        <activity android:name=".UI.activity.Product_description" />
         <activity android:name=".UI.Place_order" />
-        <activity android:name=".UI.MainActivity">
+        <activity android:name=".UI.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.codian.femalecollection.UI;
+package com.codian.femalecollection.UI.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
