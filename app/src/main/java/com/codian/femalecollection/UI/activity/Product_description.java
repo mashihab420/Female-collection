@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.codian.femalecollection.R;
+import com.codian.femalecollection.UI.Model.ModelCartRoom;
+import com.codian.femalecollection.UI.Repository.CartRepository;
 import com.codian.femalecollection.databinding.ActivityMainBinding;
 import com.codian.femalecollection.databinding.ActivityProductDescriptionBinding;
 
@@ -18,6 +20,8 @@ public class Product_description extends AppCompatActivity {
 
     ActivityProductDescriptionBinding binding;
 
+
+    int quantity = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,10 +57,42 @@ public class Product_description extends AppCompatActivity {
        if (binding.radioGroup.getCheckedRadioButtonId()==-1){
            Toast.makeText(this, "You Must Select Dress Size ", Toast.LENGTH_SHORT).show();
        }else{
-           String value = ((RadioButton)findViewById(binding.radioGroup.getCheckedRadioButtonId())).getText().toString();
 
-           Toast.makeText(this, ""+value, Toast.LENGTH_SHORT).show();
+           Intent intent = getIntent();
+           String name = intent.getStringExtra("pname");
+           String price = intent.getStringExtra("pprice");
+           String quantity = binding.textView11.getText().toString();
+           String urll = intent.getStringExtra("url");
+
+           String size = ((RadioButton)findViewById(binding.radioGroup.getCheckedRadioButtonId())).getText().toString();
+
+           final CartRepository repository = new CartRepository(this);
+
+           repository.insertSingleData(new ModelCartRoom(name,price,quantity,urll,size));
+
+           Intent intent1 = new Intent(Product_description.this,CartActivity.class);
+           startActivity(intent1);
        }
+
+    }
+
+    public void plusebtn(View view) {
+
+        int quntityy = Integer.parseInt(binding.textView11.getText().toString());
+
+        quntityy++;
+
+        binding.textView11.setText(""+quntityy);
+    }
+
+    public void minusbtn(View view) {
+        int quntityy = Integer.parseInt(binding.textView11.getText().toString());
+        quntityy--;
+        if (quntityy<=1){
+            binding.textView11.setText("1");
+        }else {
+            binding.textView11.setText(""+quntityy);
+        }
 
     }
 }

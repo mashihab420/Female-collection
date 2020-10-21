@@ -25,8 +25,11 @@
 
     </LinearLayout>
 
+
     <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="20dp"
+        android:visibility="gone"
         android:layout_height="20dp"
         android:layout_marginEnd="24dp"
         android:src="@drawable/ic_close"
@@ -46,12 +49,17 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="45dp"
         android:background="@color/white"
         android:hint="Search"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,6 +96,7 @@
         android:layout_marginStart="8dp"
         android:fontFamily="@font/montserrat"
         android:text="CATEGORIES"
+        android:id="@+id/categoriesid"
         android:textColor="#2e2e2e"
         android:textSize="@dimen/normal_text_size"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
@@ -112,6 +121,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:id="@+id/productsid"
+        android:layout_marginLeft="8dp"
         android:fontFamily="@font/montserrat"
         android:text="PRODUCTS"
         android:textColor="#2e2e2e"
@@ -121,16 +132,29 @@
         app:layout_constraintTop_toBottomOf="@+id/recyclerViewCategory" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
         android:id="@+id/recyclerViewid"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_product"
-        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="220dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/item_product" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/recyclerViewsearch"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_product"
+        android:visibility="gone"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

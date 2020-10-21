@@ -7,6 +7,9 @@
     tools:context=".UI.activity.Product_description">
 
 
+
+
+
     <LinearLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
@@ -171,6 +174,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="+"
+        android:onClick="plusebtn"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -198,6 +202,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="-"
+        android:onClick="minusbtn"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/textView8"
@@ -219,6 +224,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginBottom="65dp"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -230,6 +236,7 @@
             android:id="@+id/textView14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="650dp"
             android:padding="20sp"
             android:text="@string/dummy_text"
             android:textColor="@android:color/black"

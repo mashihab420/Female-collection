@@ -7,9 +7,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.codian.femalecollection.R;
@@ -36,12 +41,12 @@ ArrayList<ModelAll> products;
 ArrayList<ModelAll> allcategory;
 AllProductAdapter allProductAdapter;
 AllCategoryAdapter allCategoryAdapter;
-RecyclerView recyclerView,recyclerViewcat;
+RecyclerView recyclerView,recyclerViewsearch;
 ApiInterface apiInterface;
 
 
 
-
+EditText editTextsearch;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -66,11 +71,14 @@ ApiInterface apiInterface;
     View view = binding.getRoot();
         //View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.recyclerViewid);
+        recyclerViewsearch = view.findViewById(R.id.recyclerViewsearch);
 
+        editTextsearch = view.findViewById(R.id.editText);
 
         products = new ArrayList<>();
         allProductAdapter = new AllProductAdapter(getContext(),products);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
+        recyclerViewsearch.setLayoutManager(new GridLayoutManager(getContext(),1));
 
 
         allcategory = new ArrayList<>();
@@ -91,6 +99,7 @@ ApiInterface apiInterface;
                 products.addAll(response.body());
                 allProductAdapter.notifyDataSetChanged();
                 recyclerView.setAdapter(allProductAdapter);
+                recyclerViewsearch.setAdapter(allProductAdapter);
 
 
 
@@ -122,6 +131,86 @@ ApiInterface apiInterface;
 
 
 
+
+      editTextsearch.setOnTouchListener(new View.OnTouchListener() {
+          @Override
+          public boolean onTouch(View view, MotionEvent motionEvent) {
+
+              binding.recyclerViewsearch.setVisibility(View.VISIBLE);
+              binding.imageView4.setVisibility(View.VISIBLE);
+              binding.recyclerViewCategory.setVisibility(View.GONE);
+              binding.linearLayout2.setVisibility(View.GONE);
+              binding.categoriesid.setVisibility(View.GONE);
+              binding.linearLayout3.setVisibility(View.GONE);
+              binding.productsid.setVisibility(View.GONE);
+              binding.recyclerViewid.setVisibility(View.GONE);
+              return false;
+          }
+      });
+
+
+      binding.imageView4.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              binding.recyclerViewsearch.setVisibility(View.GONE);
+              binding.imageView4.setVisibility(View.GONE);
+              binding.recyclerViewCategory.setVisibility(View.VISIBLE);
+              binding.linearLayout2.setVisibility(View.VISIBLE);
+              binding.categoriesid.setVisibility(View.VISIBLE);
+              binding.linearLayout3.setVisibility(View.VISIBLE);
+              binding.productsid.setVisibility(View.VISIBLE);
+              binding.recyclerViewid.setVisibility(View.VISIBLE);
+
+              editTextsearch.setText("");
+
+              InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
+              imm.hideSoftInputFromWindow(editTextsearch.getWindowToken(), 0);
+          }
+      });
+
+
+        editTextsearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+                product_filter(s.toString());
+
+
+            }
+        });
+
+
         return view;
     }
+
+    public void product_filter(String productname){
+
+
+        ArrayList<ModelAll> filter_product=new ArrayList<>();
+        for (ModelAll item: products){
+
+            if (item.getPName().toLowerCase().contains(productname.toLowerCase()))
+            {
+                filter_product.add(item);
+            }
+
+
+
+        }
+
+        allProductAdapter.search_filter_list(filter_product);
+    }
+
+
 }

@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.codian.femalecollection.R;
 import com.codian.femalecollection.UI.Model.ModelAll;
+import com.codian.femalecollection.UI.Model.ModelCartRoom;
+import com.codian.femalecollection.UI.Repository.CartRepository;
 import com.codian.femalecollection.UI.activity.Product_description;
 
 import java.util.ArrayList;
@@ -70,6 +72,17 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.My
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Add to Cart", Toast.LENGTH_SHORT).show();
+
+                final CartRepository repository = new CartRepository(context);
+                String name = products.get(position).getPName();
+                String price = products.get(position).getPPrice();
+               // String url = "http://shihab.techdevbd.com/sokol_bazar/file_upload_api/"+products.get(position).getUrl();
+                String url = products.get(position).getUrl();
+                String quantity = "1";
+                String size = "M";
+
+                repository.insertSingleData(new ModelCartRoom(name,price,quantity,url,size));
+
             }
         });
 
@@ -79,6 +92,14 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.My
     public int getItemCount() {
         return products.size();
     }
+
+    public void search_filter_list(ArrayList<ModelAll> filter_list) {
+
+        products = filter_list;
+        notifyDataSetChanged();
+
+    }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name,price,add;

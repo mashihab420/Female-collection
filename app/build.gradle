@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.codian.femalecollection"
-        minSdkVersion 26
+        minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -62,6 +62,12 @@ dependencies {
     
 
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+
+    def room_version = "2.2.3"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "android.arch.persistence.room:rxjava2:1.1.1"
 
 
 

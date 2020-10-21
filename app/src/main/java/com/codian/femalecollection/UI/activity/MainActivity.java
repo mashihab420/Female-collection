@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -102,8 +103,11 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if(item.getItemId()==R.id.cartmenuid){
-            // Toast.makeText(this, "Q & A", Toast.LENGTH_SHORT).show();
-            valu++;
+
+            Intent intent = new Intent(MainActivity.this, CartActivity.class);
+            startActivity(intent);
+
+          /*  valu++;
             if (valu>0){
                 cartQuantity.setVisibility(View.VISIBLE);
             }
@@ -112,8 +116,8 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
 
             if (valu>10){
                 cartQuantity.setText("10+");
-            }
-          //  Toast.makeText(this, ""+valu, Toast.LENGTH_SHORT).show();
+            }*/
+
         }
         return super.onOptionsItemSelected(item);
     }
