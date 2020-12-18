@@ -21,6 +21,7 @@ import com.codian.femalecollection.UI.Adapter.CartAdapter;
 import com.codian.femalecollection.UI.Model.ModelAll;
 import com.codian.femalecollection.UI.Model.ModelCartRoom;
 import com.codian.femalecollection.UI.MysharedPreferance;
+import com.codian.femalecollection.UI.Place_order;
 import com.codian.femalecollection.UI.Repository.CartRepository;
 import com.codian.femalecollection.UI.retrofit.ApiClint;
 import com.codian.femalecollection.UI.retrofit.ApiInterface;
@@ -70,9 +71,14 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
         adapter = new CartAdapter(getApplicationContext(),arrayList,repository,this);
         recyclerView.setAdapter(adapter);
 
+        sharedPreferance = MysharedPreferance.getPreferences(CartActivity.this);
 
         repository = new CartRepository(getApplicationContext());
 
+
+
+
+         address.setText(sharedPreferance.getAddress());
 
 
         repository.getAllData().observe(this, new Observer<List<ModelCartRoom>>() {
@@ -117,7 +123,7 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
             address.setText(useraddress);
         }
 
-        sharedPreferance = MysharedPreferance.getPreferences(CartActivity.this);
+
 
         order_now.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,7 +189,10 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
                                 modelCartRoom.setId(arrayList.get(j).getId());
                                 repository.delete(modelCartRoom);
                             }
-                            Toast.makeText(CartActivity.this, "Order Successful", Toast.LENGTH_SHORT).show();
+
+                            Intent intent=new Intent(CartActivity.this, Place_order.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
                         }
 
 

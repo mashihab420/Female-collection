@@ -40,8 +40,7 @@ public class Create_account extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                binding.progressBar.setVisibility(View.VISIBLE);
-                binding.btSave.setVisibility(View.GONE);
+
                 String get_name=binding.etName.getText().toString();
                 String get_email=binding.etEmail.getText().toString();
                 String get_phone=binding.etPhone.getText().toString();
@@ -74,7 +73,8 @@ public class Create_account extends AppCompatActivity {
                 }
 
                 else {
-
+                    binding.progressBar.setVisibility(View.VISIBLE);
+                    binding.btSave.setVisibility(View.GONE);
                     Retrofit instance = ApiClint.instance();
                     apiInterface = instance.create(ApiInterface.class);
                     ModelAll modelAll= new ModelAll();

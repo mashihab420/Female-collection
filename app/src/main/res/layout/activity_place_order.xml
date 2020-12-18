@@ -16,17 +16,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            app:srcCompat="@drawable/arrow_white" />
+
 
         <TextView
 
 
+            android:fontFamily="@font/montserrat"
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +29,7 @@
 
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            android:text="Confirm Order"
+            android:text="Order Details"
             android:textColor="@android:color/white"
             android:textSize="@dimen/normal_text_size"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,79 +43,91 @@
 
 
     <TextView
+        android:textSize="16sp"
+        android:fontFamily="@font/montserrat"
         android:id="@+id/order_now"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Delivery Details"
-        android:textSize="@dimen/normal_text_size"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <TextView
-        android:textSize="@dimen/normal_text_size"
         android:id="@+id/delivery_name"
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/montserrat"
         android:text="Tanveer Hasan"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/order_now" />
 
     <TextView
-        android:textSize="@dimen/normal_text_size"
         android:id="@+id/delivery_phone"
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat"
         android:text="01952347342"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.149"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/delivery_name" />
 
     <TextView
-        android:textSize="@dimen/normal_text_size"
         android:id="@+id/delivery_email"
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat"
         android:text="Tanveer@gmail.com"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/delivery_phone" />
 
     <TextView
-        android:textSize="@dimen/normal_text_size"
         android:id="@+id/delivery_address"
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat"
         android:text="Dhaka Dhanmondi-32"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/delivery_email" />
 
     <Button
 
+        android:textSize="16sp"
+        android:fontFamily="@font/montserrat"
         android:id="@+id/button"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_margin="20dp"
         android:background="@color/soft_pink"
-        android:text="Confirm"
+        android:text="Go To Home"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/delivery_address"
-        app:layout_constraintVertical_bias="0.189" />
+        app:layout_constraintVertical_bias="0.995" />
 
     <TextView
         android:id="@+id/textView16"
@@ -139,9 +146,9 @@
         android:id="@+id/radioGroup"
         android:layout_width="200dp"
         android:layout_height="150dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16">
 
@@ -149,23 +156,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Cash On Delivery" />
+            android:fontFamily="@font/montserrat"
+            android:text="Cash On Delivery"
+            android:textSize="16sp" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="bKash" />
+            android:checked="false"
+            android:fontFamily="@font/montserrat"
+            android:text="bKash"
+            android:textSize="16sp" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="DBBL" />
+            android:checked="false"
+            android:fontFamily="@font/montserrat"
+            android:text="DBBL"
+            android:textSize="16sp" />
 
     </RadioGroup>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
