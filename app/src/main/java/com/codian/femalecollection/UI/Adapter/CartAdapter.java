@@ -44,6 +44,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     int totaldiscount = 0;
 
     int dispercent;
+    int sendSubtotal = 0;
     String value = "";
 
     public CartAdapter(Context context, List<ModelCartRoom> cart, CartRepository repository, OnDataSend dataSend) {
@@ -217,26 +218,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
         //subtotal calculation start
         quantity = Integer.parseInt(cart.get(position).getQuantity());
-        taka = (Integer.parseInt(cart.get(position).getP_price())) * quantity;
+        taka = Integer.parseInt(cart.get(position).getP_price());
         // Log.d("taka", ""+taka);
-        total = total + taka;
+        sendSubtotal = getSubtotal(quantity, taka);
         //subtotal calculation end
 
         Log.d("taka", "" + total);
 
-        //discount calculation start
-        disquantity = Integer.parseInt(cart.get(position).getQuantity());
-        distaka = (Integer.parseInt(cart.get(position).getP_price())) * disquantity;
 
-        distaka = ((Integer.parseInt(cart.get(position).getP_price())) * disquantity) - ((offer * (Integer.parseInt(cart.get(position).getP_price()))) / 100) * disquantity;
-
-        distotal = distotal + distaka;
-        // Log.d("taka", ""+distaka);
-        //discount calculation end
-
-        totaldiscount = total - distotal;
-
-        dispercent = (100 * (total - distotal)) / total;
 
 
         holder.delete.setOnClickListener(new View.OnClickListener() {
@@ -271,9 +260,24 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         });
 
 
-        dataSend.totalPrice("" + total, "" + totaldiscount);
+        dataSend.totalPrice("" + sendSubtotal);
 
 
+    }
+
+    public int getSubtotal(int quantity,int amount){
+        int totalamount=0;
+
+        for(int i = 0 ; i < cart.size(); i++) {
+            int qun = Integer.parseInt(cart.get(i).getQuantity());
+            int price = (Integer.parseInt(cart.get(i).getP_price()))*qun;
+
+
+
+
+            totalamount = totalamount + price;
+        }
+        return totalamount;
     }
 
 

@@ -304,7 +304,7 @@ public void updateAddress(ModelAll modelAll){
     }
 
     @Override
-    public void totalPrice(String subtotall, String discount) {
+    public void totalPrice(String subtotall) {
         subtotal.setText(subtotall+" BDT");
 
         int totall = 50+Integer.parseInt(subtotall);
