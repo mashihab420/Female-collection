@@ -95,12 +95,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
                  cart.get(position).setSize("S");
                  repository.update(cart.get(position));
                  holder.bt1.setChecked(true);
-                 taka = 0;
+                /* taka = 0;
                  total =0;
 
 
                  distotal = 0;
-                 distaka = 0;
+                 distaka = 0;*/
 
              }
          });
@@ -111,12 +111,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
                 cart.get(position).setSize("M");
                 repository.update(cart.get(position));
                 holder.bt2.setChecked(true);
-                taka = 0;
+            /*    taka = 0;
                 total =0;
 
 
                 distotal = 0;
-                distaka = 0;
+                distaka = 0;*/
             }
         });
 
@@ -127,12 +127,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
                 cart.get(position).setSize("L");
                 repository.update(cart.get(position));
                 holder.bt3.setChecked(true);
-                taka = 0;
+              /*  taka = 0;
                 total =0;
 
 
                 distotal = 0;
-                distaka = 0;
+                distaka = 0;*/
             }
         });
 
@@ -146,12 +146,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
                 holder.bt4.setChecked(true);
 
-                taka = 0;
+            /*    taka = 0;
                 total =0;
 
 
                 distotal = 0;
-                distaka = 0;
+                distaka = 0;*/
             }
         });
 

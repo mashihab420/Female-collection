@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 
 import android.content.Intent;
 import android.os.Build;
@@ -20,9 +21,13 @@ import android.widget.Toast;
 
 import com.codian.femalecollection.R;
 import com.codian.femalecollection.UI.HomeFragment;
+import com.codian.femalecollection.UI.Model.ModelCartRoom;
 import com.codian.femalecollection.UI.MysharedPreferance;
+import com.codian.femalecollection.UI.Repository.CartRepository;
 import com.codian.femalecollection.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
@@ -33,7 +38,7 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
     TextView toolbarTitle,cartQuantity;
     MysharedPreferance sharedPreferance;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-
+    CartRepository repository;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,20 +74,50 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         {
             binding.userName.setText(sharedPreferance.getData());
             binding.createaccount.setVisibility(View.GONE);
-            binding.category.setVisibility(View.GONE);
+            binding.loginid.setVisibility(View.GONE);
+            binding.logout.setVisibility(View.VISIBLE);
+            binding.orderid.setVisibility(View.VISIBLE);
+        }else{
+            binding.createaccount.setVisibility(View.VISIBLE);
+            binding.loginid.setVisibility(View.VISIBLE);
+            binding.logout.setVisibility(View.GONE);
+            binding.orderid.setVisibility(View.GONE);
         }
 
 
-        binding.category.setOnClickListener(this);
-        binding.home.setOnClickListener(this);
+        binding.loginid.setOnClickListener(this);
+        binding.cart.setOnClickListener(this);
         binding.logout.setOnClickListener(this);
-        binding.profile.setOnClickListener(this);
         binding.createaccount.setOnClickListener(this);
+        binding.orderid.setOnClickListener(this);
         initFragmentHome();
 
 
+        repository = new CartRepository(this);
+
+        repository.getAllData().observe(this, new Observer<List<ModelCartRoom>>() {
+            @Override
+            public void onChanged(List<ModelCartRoom> modelCartRooms) {
+
+                if (modelCartRooms.size()==0){
+                    cartQuantity.setVisibility(View.GONE);
+                }else {
+                    cartQuantity.setVisibility(View.VISIBLE);
+                    if(modelCartRooms.size()>99){
+                        cartQuantity.setText("99+");
+                    }else {
+                        cartQuantity.setText(""+modelCartRooms.size());
+                    }
+
+
+                }
+            }
+        });
+
 
     }
+
+
 
 
     private void initFragmentHome(){
@@ -134,34 +169,51 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;*/
 
-            case R.id.profile:
+            case R.id.cart:
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-                Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
+                Intent intent1=new Intent(getApplicationContext(),CartActivity.class);
+                startActivity(intent1);
                 break;
 
 
-            case R.id.category:
+            case R.id.loginid:
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-                Intent intent1=new Intent(getApplicationContext(),LogIn.class);
+                binding.orderid.setVisibility(View.VISIBLE);
+                 intent1=new Intent(getApplicationContext(),LogIn.class);
+                intent1.putExtra("activity","home");
                 startActivity(intent1);
 
                 break;
 
             case R.id.createaccount:
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
-
-
                 Intent intent=new Intent(getApplicationContext(),Create_account.class);
+                intent.putExtra("activity","home");
+                startActivity(intent);
+
+                break;
+
+            case R.id.orderid:
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                 intent=new Intent(getApplicationContext(),OrdersActivity.class);
                 startActivity(intent);
 
                 break;
 
 
 
-
-
             case R.id.logout:
                 Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
+                sharedPreferance.setData("none");
+                sharedPreferance.setAddress("none");
+                sharedPreferance.setPhone("none");
+                sharedPreferance.setEmail("none");
+                sharedPreferance.setOwnerID("none");
+                binding.userName.setText("");
+                binding.createaccount.setVisibility(View.VISIBLE);
+                binding.loginid.setVisibility(View.VISIBLE);
+                binding.logout.setVisibility(View.GONE);
+                binding.orderid.setVisibility(View.GONE);
                 break;
 
 

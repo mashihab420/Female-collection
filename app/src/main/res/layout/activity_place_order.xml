@@ -17,18 +17,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-
         <TextView
 
 
-            android:fontFamily="@font/montserrat"
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-
             android:layout_gravity="center"
+
+
             android:layout_marginLeft="20dp"
+            android:fontFamily="@font/montserrat"
             android:text="Order Details"
             android:textColor="@android:color/white"
             android:textSize="@dimen/normal_text_size"
@@ -40,19 +39,17 @@
     </LinearLayout>
 
 
-
-
     <TextView
-        android:textSize="16sp"
-        android:fontFamily="@font/montserrat"
         android:id="@+id/order_now"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="28dp"
+        android:fontFamily="@font/montserrat"
         android:text="Delivery Details"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
+        android:textColor="@color/black_material"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
@@ -61,12 +58,13 @@
         android:layout_width="wrap_content"
 
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="36dp"
         android:fontFamily="@font/montserrat"
-        android:text="Tanveer Hasan"
+        android:textColor="@color/black_material"
+        android:text="demo"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/order_now" />
 
@@ -75,26 +73,26 @@
         android:layout_width="wrap_content"
 
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp" android:textColor="@color/black_material"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat"
-        android:text="01952347342"
+        android:text="01952234567"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.149"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/delivery_name" />
 
     <TextView
         android:id="@+id/delivery_email"
-        android:layout_width="wrap_content"
+        android:layout_width="wrap_content" android:textColor="@color/black_material"
 
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat"
-        android:text="Tanveer@gmail.com"
+        android:text="demo@gmail.com"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/delivery_phone" />
 
@@ -103,26 +101,26 @@
         android:layout_width="wrap_content"
 
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp" android:textColor="@color/black_material"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/montserrat"
         android:text="Dhaka Dhanmondi-32"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/delivery_email" />
 
     <Button
 
-        android:textSize="16sp"
-        android:fontFamily="@font/montserrat"
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="20dp"
         android:background="@color/soft_pink"
+        android:fontFamily="@font/montserrat"
         android:text="Go To Home"
         android:textColor="@android:color/white"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -133,11 +131,12 @@
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:text="Payment Method"
-        android:textSize="@dimen/normal_text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserrat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout" />
 
@@ -146,9 +145,9 @@
         android:id="@+id/radioGroup"
         android:layout_width="200dp"
         android:layout_height="150dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16">
 
@@ -165,6 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:checked="false"
+            android:id="@+id/rb1"
             android:fontFamily="@font/montserrat"
             android:text="bKash"
             android:textSize="16sp" />
@@ -174,6 +174,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:checked="false"
+            android:id="@+id/rb2"
             android:fontFamily="@font/montserrat"
             android:text="DBBL"
             android:textSize="16sp" />

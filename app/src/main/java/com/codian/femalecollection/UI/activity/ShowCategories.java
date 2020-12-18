@@ -53,25 +53,47 @@ public class ShowCategories extends AppCompatActivity {
 
         ModelAll modelAll = new ModelAll();
         modelAll.setCategories(category);
+        
+        if (category.equals("All")){
+
+            apiInterface.getProducts().enqueue(new Callback<List<ModelAll>>() {
+                @Override
+                public void onResponse(Call<List<ModelAll>> call, Response<List<ModelAll>> response) {
+                    categorys.addAll(response.body());
+                    allProductAdapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(allProductAdapter);
+                    // Toast.makeText(ShowCategories.this, ""+response.body().size(), Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailure(Call<List<ModelAll>> call, Throwable t) {
+
+                    Toast.makeText(ShowCategories.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+        }else{
+
+            apiInterface.getcategoryitems(modelAll).enqueue(new Callback<List<ModelAll>>() {
+                @Override
+                public void onResponse(Call<List<ModelAll>> call, Response<List<ModelAll>> response) {
+                    categorys.addAll(response.body());
+                    allProductAdapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(allProductAdapter);
+                    // Toast.makeText(ShowCategories.this, ""+response.body().size(), Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailure(Call<List<ModelAll>> call, Throwable t) {
+
+                    Toast.makeText(ShowCategories.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+        }
 
 
-        //TODO not done
-
-        apiInterface.getcategoryitems(modelAll).enqueue(new Callback<List<ModelAll>>() {
-            @Override
-            public void onResponse(Call<List<ModelAll>> call, Response<List<ModelAll>> response) {
-                categorys.addAll(response.body());
-                allProductAdapter.notifyDataSetChanged();
-                recyclerView.setAdapter(allProductAdapter);
-               // Toast.makeText(ShowCategories.this, ""+response.body().size(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<List<ModelAll>> call, Throwable t) {
-
-                Toast.makeText(ShowCategories.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
     }
 }

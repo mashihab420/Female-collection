@@ -20,10 +20,16 @@ public interface ApiInterface {
  Call<List<ModelAll>> getcategory();
 
 
+
+ @POST("getorders.php")
+ Call<List<ModelAll>> getorders(@Body ModelAll modelAll);
+
+
  @POST("signup.php")
  Call<ModelAll> create_account(@Body ModelAll modelAll);
 
-
+ @POST("update_user_info.php")
+ Call<ModelAll> updateUserInfo(@Body ModelAll modelAll);
 
  @POST("user_order_insert.php")
  Call<ModelAll> insert_order(@Body ModelAll modelAll);

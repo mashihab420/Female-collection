@@ -41,12 +41,13 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
     ConstraintLayout emptyimage,constraintLayout;
     RecyclerView recyclerView;
     CartAdapter adapter;
-    TextView address,subtotal,total,discount,order_now;
+    TextView address,addresstext,subtotal,total,discount,order_now;
     List<ModelCartRoom> arrayList;
     Context context;
     CartRepository repository;
     ApiInterface apiInterface;
     MysharedPreferance sharedPreferance;
+    int i = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +59,27 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
         discount = findViewById(R.id.textView13);
         total = findViewById(R.id.textView15);
         address = findViewById(R.id.textView6);
+        addresstext = findViewById(R.id.textView7);
         order_now = findViewById(R.id.order_now);
+
+
+
 
         arrayList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
 
         //apiInterface = ApiClint.instance();
         sharedPreferance = MysharedPreferance.getPreferences(getApplicationContext());
+
+        String useraddress =  sharedPreferance.getAddress();
+        if (useraddress.equals("none")){
+            address.setVisibility(View.GONE);
+            addresstext.setVisibility(View.GONE);
+        }else {
+            address.setVisibility(View.VISIBLE);
+            addresstext.setVisibility(View.VISIBLE);
+        }
+
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
@@ -115,13 +130,6 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
             }
         });
 
-        String useraddress =  sharedPreferance.getAddress();
-        if (useraddress.equals("none")){
-            address.setText("");
-
-        }else {
-            address.setText(useraddress);
-        }
 
 
 
@@ -145,19 +153,40 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
 
                         if (sharedPreferance.getPhone().equals("none"))
                         {
-                            Intent intent=new Intent(CartActivity.this,Create_account.class);
+
+                            String addresss = address.getText().toString();
+                            Intent intent=new Intent(CartActivity.this,LogIn.class);
+
+
+                            intent.putExtra("activity","cart");
+                            intent.putExtra("address",addresss);
+                            intent.putExtra("subtotal",subtotal.getText().toString());
+                            intent.putExtra("total",total.getText().toString());
                             startActivity(intent);
                         }
                         else {
 
 
+                            String addresss = address.getText().toString();
+                            String phonee = sharedPreferance.getPhone();
+
+                            sharedPreferance.setAddress(addresss);
+
+                            ModelAll modelAll = new ModelAll();
+                            modelAll.setPhone(phonee);
+                            modelAll.setAddress(addresss);
+
+                            updateAddress(modelAll);
+
                             String getInvoiveID=getOrderNumberGenerator();
 
-                            for ( int i=0;i<arrayList.size();i++)
+                            Date d = new Date();
+                            CharSequence s  = DateFormat.format("d MMMM, yyyy ", d.getTime());
+
+                            for ( i=0;i<arrayList.size();i++)
                             {
 
-
-                                ModelAll modelAll=new ModelAll();
+                                 modelAll=new ModelAll();
                                 modelAll.setProduct_name(arrayList.get(i).getP_name());
                                 modelAll.setProduct_price(arrayList.get(i).getP_price());
                                 modelAll.setQuantity(arrayList.get(i).getQuantity());
@@ -166,31 +195,25 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
                                 modelAll.setSubtotal(subtotal.getText().toString());
                                 modelAll.setTotal(total.getText().toString());
                                 modelAll.setSize(arrayList.get(i).getSize());
-
-
-
-
-                                Date d = new Date();
-                                CharSequence s  = DateFormat.format("d MMMM, yyyy ", d.getTime());
                                 modelAll.setDate(s.toString());
+
+
+
+
                                 sendData(modelAll);
 
 
 
 
+
                             }
 
-
-
-                            for (int j=0;j<arrayList.size();j++)
-                            {
-                                CartRepository repository = new CartRepository(context);
-                                ModelCartRoom modelCartRoom = new ModelCartRoom();
-                                modelCartRoom.setId(arrayList.get(j).getId());
-                                repository.delete(modelCartRoom);
-                            }
 
                             Intent intent=new Intent(CartActivity.this, Place_order.class);
+                            String orderitem = String.valueOf(arrayList.size());
+                            intent.putExtra("totalitem",orderitem);
+                            intent.putExtra("subtotal",subtotal.getText().toString());
+                            intent.putExtra("total",total.getText().toString());
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                         }
@@ -222,9 +245,29 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
 
     }
 
+public void updateAddress(ModelAll modelAll){
+
+    Retrofit instance = ApiClint.instance();
+    apiInterface = instance.create(ApiInterface.class);
+
+    apiInterface.updateUserInfo(modelAll).enqueue(new Callback<ModelAll>() {
+        @Override
+        public void onResponse(Call<ModelAll> call, Response<ModelAll> response) {
 
 
-    public void sendData(ModelAll modelAll)
+        }
+
+        @Override
+        public void onFailure(Call<ModelAll> call, Throwable t) {
+
+
+
+        }
+    });
+
+}
+
+  public void sendData(ModelAll modelAll)
     {
 
 
@@ -271,9 +314,13 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
 
     }
 
+    public void backbtn(View view) {
+        onBackPressed();
+    }
 
 
-    public void confirmorderId(View view) {
+
+   /* public void confirmorderId(View view) {
 
         String ordernumberselfservice = getOrderNumberGenerator();
         String useraddress =  sharedPreferance.getAddress();
@@ -281,11 +328,12 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
         String totalll = total.getText().toString();
 
         if (useraddress.equals("none")){
-            Intent intent = new Intent(getApplicationContext(),Create_account.class);
+            Intent intent = new Intent(getApplicationContext(),LogIn.class);
 
             intent.putExtra("subtotall", sub);
             intent.putExtra("totall", totalll);
             intent.putExtra("invoicenum",ordernumberselfservice);
+            intent.putExtra("activity","cart");
 
             startActivity(intent);
 
@@ -294,5 +342,7 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
         }
 
 
-    }
+    }*/
+
+
 }

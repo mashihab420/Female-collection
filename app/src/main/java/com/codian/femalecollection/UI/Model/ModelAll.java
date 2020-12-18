@@ -86,7 +86,9 @@ public class ModelAll {
     @Expose
     private String date;
 
-
+    @SerializedName("response")
+    @Expose
+    private String response;
 
 
     @SerializedName("password")
@@ -273,5 +275,13 @@ public class ModelAll {
 
     public void setCategories(String categories) {
         this.categories = categories;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
     }
 }

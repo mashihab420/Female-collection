@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.codian.femalecollection.R;
@@ -15,6 +16,7 @@ public class Place_order extends AppCompatActivity {
 
     TextView name,phone,email,address,gotohome;
     MysharedPreferance mysharedPreferance;
+    RadioButton radioButton1,radioButton2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +31,17 @@ public class Place_order extends AppCompatActivity {
         address=findViewById(R.id.delivery_address);
         gotohome=findViewById(R.id.button);
 
+        radioButton1 = findViewById(R.id.rb1);
+        radioButton2 = findViewById(R.id.rb2);
 
-        name.setText(mysharedPreferance.getData());
-        phone.setText(mysharedPreferance.getPhone());
-        email.setText(mysharedPreferance.getemail());
-        address.setText(mysharedPreferance.getAddress());
+        radioButton1.setClickable(false);
+        radioButton2.setClickable(false);
+
+
+        name.setText("Order Item : "+getIntent().getStringExtra("totalitem"));
+        phone.setText("Subtotal : "+getIntent().getStringExtra("subtotal"));
+        email.setText("Total : "+getIntent().getStringExtra("total"));
+        address.setText("Address : "+mysharedPreferance.getAddress());
 
         gotohome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,5 +57,13 @@ public class Place_order extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent=new Intent(Place_order.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }

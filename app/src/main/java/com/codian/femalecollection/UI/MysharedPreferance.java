@@ -57,21 +57,14 @@ public class MysharedPreferance {
     public String getPhone(){return  sharedPreferences.getString("phone","none");}
 
 
-
     public  void setAddress(String address)
     {
-        editor.putString(address,"address");
+        editor.putString("address",address);
         editor.apply();
 
     }
 
-
     public String getAddress(){return  sharedPreferences.getString("address","none");}
-
-
-
-
-
 
 
     public  void setEmail(String email)
