@@ -23,6 +23,12 @@ public interface ApiInterface {
  @POST("signup.php")
  Call<ModelAll> create_account(@Body ModelAll modelAll);
 
+
+
+ @POST("user_order_insert.php")
+ Call<ModelAll> insert_order(@Body ModelAll modelAll);
+
+
  @POST("get_categoryitem.php")
  Call<List<ModelAll>> getcategoryitems(@Body ModelAll modelAll);
 

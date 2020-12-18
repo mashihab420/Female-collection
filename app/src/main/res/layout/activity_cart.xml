@@ -132,12 +132,12 @@
                 android:padding="10dp"
                 android:background="@drawable/edittext_design"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/textView5"
+                app:layout_constraintBottom_toTopOf="@+id/order_now"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/order_now"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="16dp"
