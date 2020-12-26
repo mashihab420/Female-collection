@@ -268,6 +268,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     public int getSubtotal(int quantity,int amount){
         int totalamount=0;
 
+
         for(int i = 0 ; i < cart.size(); i++) {
             int qun = Integer.parseInt(cart.get(i).getQuantity());
             int price = (Integer.parseInt(cart.get(i).getP_price()))*qun;

@@ -232,6 +232,7 @@ public class Create_account extends AppCompatActivity {
             modelAll.setSubtotal(subtotall);
             modelAll.setTotal(totall);
             modelAll.setSize(arrayList.get(i).getSize());
+            modelAll.setUrl(arrayList.get(i).getUrl());
             modelAll.setDate(datee.toString());
 
 

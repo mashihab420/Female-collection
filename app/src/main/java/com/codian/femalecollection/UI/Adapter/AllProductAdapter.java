@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.MyViewHolder> {
     Context context;
-   ArrayList<ModelAll> products;
+    ArrayList<ModelAll> products;
 
     public AllProductAdapter(Context context, ArrayList<ModelAll> products) {
         this.context = context;
@@ -33,7 +33,7 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.My
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_product,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false);
 
         return new MyViewHolder(view);
     }
@@ -43,31 +43,31 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.My
 
         holder.name.setText(products.get(position).getPName());
         holder.price.setText(products.get(position).getPPrice());
-        final String pname = products.get(position).getPName();
-        final String pprice = products.get(position).getPPrice();
-        final String description = products.get(position).getDescription();
-        final String url = products.get(position).getUrl();
-
+        String pname = products.get(position).getPName();
+        String pprice = products.get(position).getPPrice();
+        String description = products.get(position).getDescription();
+        String url = products.get(position).getUrl();
+        String imageurl = "http://femalefashion88.000webhostapp.com/femalefashion/file_upload_api/" + products.get(position).getUrl();
         Glide
                 .with(context)
                 // .load(R.drawable.demopic1)
-                .load(products.get(position).getUrl())
+                .load(imageurl)
                 .centerCrop()
                 .into(holder.image);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Product_description.class);
-                intent.putExtra("pname",pname);
-                intent.putExtra("pprice",pprice);
-                intent.putExtra("description",description);
-                intent.putExtra("url",url);
+                intent.putExtra("pname", pname);
+                intent.putExtra("pprice", pprice);
+                intent.putExtra("description", description);
+                intent.putExtra("url", url);
                 context.startActivity(intent);
 
 
             }
         });
-        
+
         holder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,12 +76,13 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.My
                 final CartRepository repository = new CartRepository(context);
                 String name = products.get(position).getPName();
                 String price = products.get(position).getPPrice();
-               // String url = "http://shihab.techdevbd.com/sokol_bazar/file_upload_api/"+products.get(position).getUrl();
-                String url = products.get(position).getUrl();
+                String url = "http://femalefashion88.000webhostapp.com/femalefashion/file_upload_api/" + products.get(position).getUrl();
+                // String url = products.get(position).getUrl();
                 String quantity = "1";
                 String size = "M";
 
-                repository.insertSingleData(new ModelCartRoom(name,price,quantity,url,size));
+                repository.insertSingleData(new ModelCartRoom(name, price, quantity, url, size));
+
 
             }
         });
@@ -102,8 +103,9 @@ public class AllProductAdapter extends RecyclerView.Adapter<AllProductAdapter.My
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView name,price,add;
+        TextView name, price, add;
         ImageView image;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.textView6);

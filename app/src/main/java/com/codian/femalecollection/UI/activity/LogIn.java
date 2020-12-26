@@ -44,7 +44,7 @@ public class LogIn extends AppCompatActivity {
     Context context;
     CartRepository repository;
 
-int i;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -171,7 +171,7 @@ int i;
     }
 
     public  void orderitem(ModelAll modelAll){
-
+        int i;
 
         String getInvoiveID=getOrderNumberGenerator();
 
@@ -182,7 +182,7 @@ int i;
         Intent intent1 = getIntent();
         String subtotall = intent1.getStringExtra("subtotal");
         String totall = intent1.getStringExtra("total");
-        for ( i=0;i<arrayList.size();i++)
+       for ( i=0;i<arrayList.size();i++)
         {
 
 
@@ -195,6 +195,7 @@ int i;
             modelAll.setSubtotal(subtotall);
             modelAll.setTotal(totall);
             modelAll.setSize(arrayList.get(i).getSize());
+            modelAll.setUrl(arrayList.get(i).getUrl());
             modelAll.setDate(datee.toString());
 
 
@@ -207,6 +208,7 @@ int i;
 
 
         }
+
 
 
 

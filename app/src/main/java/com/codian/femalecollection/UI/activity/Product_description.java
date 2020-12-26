@@ -38,7 +38,7 @@ public class Product_description extends AppCompatActivity {
 
         Glide
                 .with(getApplicationContext())
-                .load(urll)
+                .load("http://femalefashion88.000webhostapp.com/femalefashion/file_upload_api/"+urll)
                 .centerCrop()
                 .into(binding.imageView);
 

@@ -93,6 +93,7 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
 
 
 
+
          address.setText(sharedPreferance.getAddress());
 
 
@@ -105,6 +106,8 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
                 adapter.notifyDataSetChanged();
 
 
+
+               //Toast.makeText(CartActivity.this, ""+arrayList.get(1).getSize(), Toast.LENGTH_SHORT).show();
 
                 if (modelCartRooms.size() == 0){
                     constraintLayout.setVisibility(View.GONE);
@@ -165,7 +168,7 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
                             startActivity(intent);
                         }
                         else {
-
+                           // Toast.makeText(CartActivity.this, ""+arrayList.get(3).getSize(), Toast.LENGTH_SHORT).show();
 
                             String addresss = address.getText().toString();
                             String phonee = sharedPreferance.getPhone();
@@ -195,14 +198,37 @@ public class CartActivity extends AppCompatActivity implements OnDataSend {
                                 modelAll.setSubtotal(subtotal.getText().toString());
                                 modelAll.setTotal(total.getText().toString());
                                 modelAll.setSize(arrayList.get(i).getSize());
+                                modelAll.setUrl(arrayList.get(i).getUrl());
                                 modelAll.setDate(s.toString());
 
 
 
 
-                                sendData(modelAll);
+                                Retrofit instance = ApiClint.instance();
+                                apiInterface = instance.create(ApiInterface.class);
+
+                                apiInterface.insert_order(modelAll).enqueue(new Callback<ModelAll>() {
+                                    @Override
+                                    public void onResponse(Call<ModelAll> call, Response<ModelAll> response) {
+                                    if (response.isSuccessful()){
+
+                                    }else {
+                                        Toast.makeText(CartActivity.this, "Order Not Successful", Toast.LENGTH_SHORT).show();
+
+                                    }
+
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<ModelAll> call, Throwable t) {
+
+                                        Toast.makeText(CartActivity.this, "Check the internet connection !", Toast.LENGTH_SHORT).show();
 
 
+                                    }
+                                });
+
+                              //  Toast.makeText(CartActivity.this, ""+i, Toast.LENGTH_SHORT).show();
 
 
 
@@ -305,11 +331,11 @@ public void updateAddress(ModelAll modelAll){
 
     @Override
     public void totalPrice(String subtotall) {
-        subtotal.setText(subtotall+" BDT");
+        subtotal.setText(subtotall+"");
 
         int totall = 50+Integer.parseInt(subtotall);
 
-        total.setText(totall+" BDT");
+        total.setText(totall+"");
 
 
     }

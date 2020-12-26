@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import com.codian.femalecollection.UI.Model.ModelCartRoom;
 
 
-@Database(entities = ModelCartRoom.class,version = 1,exportSchema = false)
+@Database(entities = ModelCartRoom.class,version = 3,exportSchema = false)
 public abstract class MyRoomDataBase extends RoomDatabase {
 
     private static MyRoomDataBase roomDataBase = null;

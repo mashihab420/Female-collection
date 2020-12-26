@@ -14,32 +14,32 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:background="@color/colorPrimaryDark"
             android:layout_height="50dp"
             android:layout_marginTop="0dp"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="24dp"
                 android:id="@+id/backicon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="10dp"
                 android:onClick="backbtn"
-                android:layout_marginLeft="8dp"
-                android:src="@drawable/ic_back"
-                android:layout_height="24dp"/>
+                android:src="@drawable/ic_back" />
 
             <TextView
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Cart"
                 android:textColor="@color/white"
-                android:layout_marginLeft="8dp"
-                android:fontFamily="@font/montserrat"
-                android:textSize="18sp"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content"/>
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -49,8 +49,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
-            android:visibility="visible"
             android:layout_marginEnd="0dp"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,11 +62,11 @@
             android:layout_width="match_parent"
             android:layout_height="420dp"
             android:layout_marginTop="140dp"
-            android:visibility="visible"
             android:background="@color/white"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/textView"
@@ -83,10 +83,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
                 android:fontFamily="@font/montserrat"
-                android:textColor="#C6C6C6"
                 android:text="Add something to make me happy :)"
+                android:textColor="#C6C6C6"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -99,9 +99,9 @@
             android:id="@+id/subtotallayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone"
             android:layout_marginTop="10dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerView">
 
@@ -120,7 +120,6 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
 
-
             <EditText
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
@@ -128,10 +127,10 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="24dp"
+                android:background="@drawable/edittext_design"
                 android:fontFamily="@font/montserrat"
                 android:hint="Address"
                 android:padding="10dp"
-                android:background="@drawable/edittext_design"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/order_now"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -146,10 +145,10 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/button_style"
                 android:fontFamily="@font/montserrat"
-                android:paddingTop="10dp"
-                android:textAlignment="center"
                 android:onClick="confirmorderId"
+                android:paddingTop="10dp"
                 android:text="ORDER NOW"
+                android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -201,44 +200,81 @@
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:fontFamily="@font/montserrat"
-                android:text="0 BDT"
+                android:text="0"
                 android:textColor="#434343"
                 android:textSize="22dp"
-                app:layout_constraintBottom_toTopOf="@+id/textView10"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toStartOf="@+id/textView24"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-              android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:fontFamily="@font/montserrat"
-                android:text="50 BDT"
+                android:text="50"
                 android:textColor="#434343"
                 android:textSize="22dp"
                 app:layout_constraintBottom_toTopOf="@+id/textView15"
-                app:layout_constraintEnd_toEndOf="parent" />
-
+                app:layout_constraintEnd_toStartOf="@+id/textView25" />
 
 
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="0 BDT"
                 android:fontFamily="@font/montserrat"
+                android:text="0"
+                android:textColor="#434343"
+                android:textSize="22dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView7"
+                app:layout_constraintEnd_toStartOf="@+id/textView26" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="BDT"
+                android:textColor="#434343"
+                android:textSize="22dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
+                android:text="BDT"
+                android:textColor="#434343"
+                android:textSize="22dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView15"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="12dp"
+                android:text="BDT"
                 android:textColor="#434343"
                 android:textSize="22dp"
                 app:layout_constraintBottom_toTopOf="@+id/textView7"
                 app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
