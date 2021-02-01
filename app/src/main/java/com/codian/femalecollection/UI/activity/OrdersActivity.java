@@ -33,7 +33,7 @@ public class OrdersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_orders);
+        setContentView(R.layout.activity_orderrs);
 
         arrayList = new ArrayList<>();
         Retrofit instance = ApiClint.instance();
